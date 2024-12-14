@@ -1,0 +1,56 @@
+#Задание 1
+import random
+
+def guessGame():
+    secret_number = random.randint(1, 100)
+    
+    attempts = 0
+    guessed = False
+
+    print("Я загадал число от 1 до 100. Попробуйте угадать его")
+
+    while not guessed:
+        user_guess = int(input("Введите ваше предположение: "))
+        attempts += 1
+
+        if user_guess < secret_number:
+            print("Загаданное число больше введенного")
+        elif user_guess > secret_number:
+            print("Загаданное число меньше введенного")
+        else:
+            guessed = True
+            print(f"Вы угадали число. Загаданным было:  {secret_number}, угадали за {attempts} попыток.")
+
+guessGame()
+
+#задание 2
+def group_characters(input_string):
+    characters = input_string.split()
+    
+    
+    grouped = []
+
+    current_group = []
+    
+    for char in characters:
+       
+        if not current_group or char == current_group[-1]:
+            current_group.append(char)
+        else:
+           
+            grouped.append(current_group)
+            current_group = [char]
+    
+  
+    if current_group:
+        grouped.append(current_group)
+    
+    return grouped
+
+# 
+input_data = "с с с о о о я и и и я с о"
+result = group_characters(input_data)
+
+
+for group in result:
+    print(group)
